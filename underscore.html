@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<script>
+			// function each(arr, callback) {
+			// 	// loop through the array
+			// 	for(var i = 0; i < arr.length; i++) {
+			// 		// we invoke callback (we don't know and don't care what it is yet! we just assume it is a function) and pass it arr[i]
+			// 		callback(arr[i]) 
+			// 	}
+			// }
+
+			// call the each function and pass in the array and the function to run
+			// each([1,2,3], function(num) { alert(num); })
+
+			var _ = {
+				map: function(arr, callback) { 
+					var outputArray = []
+					for (var i = 0; i < arr.length; i ++) {
+						outputArray.push(callback(arr[i]))
+						console.log(outputArray)
+					}
+					return outputArray
+				},
+				reduce: function(arr, callback) {
+					var outputNum = arr[0]
+					for (var i = 1; i < arr.length; i++) {
+						outputNum = callback(outputNum, arr[i])
+						console.log(outputNum)
+					}
+					return outputNum
+				},
+				find: function(arr, callback) {
+					for (var i = 0; i < arr.length; i++) {
+						if (callback(arr[i])) {
+							return arr[i]
+						}
+					}
+					return undefined;
+				},
+				filter: function(arr, callback) {
+					var array1 = []
+					for (var i = 0; i < arr.length; i++) {
+						if (callback(arr[i])) {
+							array1.push(arr[i])
+						}
+					}
+					return array1
+				},
+				reject: function(arr, callback) {
+					var array1 = []
+					for (var i = 0; i < arr.length; i ++) {
+						if (!callback(arr[i])) {
+							array1.push(arr[i])
+						}
+					}
+					return array1
+				}
+			}
+
+			// you just created a library with 5 methods!
+			// var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }); //should return [2, 4, 6] after you finish implementing the code above
+			var num1 = _.map([1, 2, 3, 4], function(num) { return num * 2});
+			var num2 = _.reduce([1, 2, 3, 4], function(sum, num) { return sum * num });
+			var num3 = _.find([1, 2, 3, 4], function(num) { return num % 2 == 0 });
+			var num4 = _.filter([1, 2, 3, 4], function(num) { return num % 2 == 0 });
+			var num5 = _.reject([1, 2, 3, 4], function(num) { return num % 2 == 0 });
+			console.log(num1 + ": That's the end of num1")
+			console.log(num2 + ": That's the end of num2")
+			console.log(num3 + ": That's the end of num3")
+			console.log(num4 + ": That's the end of num4")
+			console.log(num5 + ": That's the end of num5")
+		</script>
+	</head>
+	<body>
+
+	</body>
+	</html>
